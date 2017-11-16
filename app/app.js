@@ -1,4 +1,5 @@
 const express = require('express');
+const reload = require('reload');
 var app = express();
 
 var dataFile = require('./data/data.json');
@@ -19,6 +20,7 @@ dataFile.speakers.forEach(item => {
 app.set('port', process.env.PORT || 3600);
 app.set('appData', dataFile);
 
+app.use(express.static('app/public'));
 app.use(require('./routes/index'))
 app.use(require('./routes/speakers'))
 
@@ -30,3 +32,4 @@ const server = app.listen(port, () => {
   
 })
 
+reload(server,app);

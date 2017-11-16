@@ -12,6 +12,7 @@ router.get('/speakers', (req,res) => {
     info += `
       <li>
         <h2>${item.name}</h2>
+        <img src="/images/speakers/${item.shortname}_tn.jpg" >
         <p>${item.summary}</p>
       </li>
     `;
@@ -19,8 +20,11 @@ router.get('/speakers', (req,res) => {
   });
   // var dataFile = req.app.get('appData');
   res.send(`
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  
     <h1>Roux Meetups</h1>
     ${info}
+    <script src="/reload/reload.js"></script>
   `)
   
 });
@@ -34,7 +38,9 @@ router.get('/speakers/:speakerid', (req,res) => {
   res.send(`
     <h1>${speaker.title}</h1>
     <h2>${speaker.name}</h2>
+    <img src="/images/speakers/${speaker.shortname}_tn.jpg" >
     <p>${speaker.summary}</p>
+    <script src="/reload/reload.js"></script>
   `)
   
 });

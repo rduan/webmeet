@@ -5,7 +5,10 @@ router.get('/', (req,res) => {
   
 
   res.send(`
-    <h1>Welcomes</h1>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <h1>Welcomes to my</h1>
+    <img src="/images/misc/background.jpg" style="height:300px;">
+    <script src="/reload/reload.js"></script>
   `)
   
 });
