@@ -15,37 +15,13 @@ dataFile.speakers.forEach(item => {
   
 });
 
-console.log(info);
 
 app.set('port', process.env.PORT || 3600);
-app.get('/', (req,res) => {
-  
+app.set('appData', dataFile);
 
-  res.send(`
-    <h1>Welcomes</h1>
-  `)
-  
-});
-app.get('/speakers', (req,res) => {
-  
+app.use(require('./routes/index'))
+app.use(require('./routes/speakers'))
 
-  res.send(`
-    <h1>Roux Meetups</h1>
-    ${info}
-  `)
-  
-});
-app.get('/speakers/:speakerid', (req,res) => {
-  var speaker = dataFile.speakers[req.params.speakerid];
-
-
-  res.send(`
-    <h1>${speaker.title}</h1>
-    <h2>${speaker.name}</h2>
-    <p>${speaker.summary}</p>
-  `)
-  
-});
 
 const port = app.get('port');
 
